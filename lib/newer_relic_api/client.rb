@@ -7,8 +7,7 @@ module NewerRelicApi
 
     def application(id)
       response = @request.get("/v2/application/#{id}.json")
-      data = JSON(response.body)
-      Resources::Application.new(data['application'])
+      Resources::Application.new(response.body['application'])
     end
   end
 

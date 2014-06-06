@@ -49,14 +49,18 @@ module NewerRelicApi
           respond_with_application_data({ 'id' => 2 })
 
           client = NewerRelicApi::Client.new('api-key')
-          expect(client.application(2).id).to eql 2
+          application = client.application(2)
+
+          expect(application.id).to eql 2
         end
 
         it "returns an application resource" do
           respond_with_application_data({ 'id' => 2 })
 
           client = NewerRelicApi::Client.new('api-key')
-          expect(client.application(2)).to be_a Resources::Application
+          application = client.application(2)
+
+          expect(application).to be_a Resources::Application
         end
       end
     end
